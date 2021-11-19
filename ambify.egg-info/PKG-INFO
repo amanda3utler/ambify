@@ -1,0 +1,14 @@
+Metadata-Version: 1.2
+Name: ambify
+Version: 0.1
+Summary: An all-in-one ambient music player
+Home-page: UNKNOWN
+Author: Amanda Butler
+Author-email: amanda.butler@yale.edu
+License: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Intended Audience :: Spotify Users
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6

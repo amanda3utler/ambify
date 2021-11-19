@@ -1,0 +1,6 @@
+numpy>=1.17
+scipy
+spotipy
+matplotlib>=3
+streamlit
+pygame
