@@ -51,7 +51,6 @@ def run_classifier(username,playlist):
     return outc
 
 
-# %%
 def modes(array):
     array = np.array(array)
     outc = st.mode(array)
