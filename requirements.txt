@@ -3,6 +3,4 @@ pandas
 Pillow
 pygame
 requests
-collections
-time
 statistics
