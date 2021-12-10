@@ -1,6 +1,7 @@
 numpy
 pandas
 Pillow
+libglib2.0-0
 pygame
 requests
 statistics
