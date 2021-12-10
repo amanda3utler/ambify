@@ -20,9 +20,14 @@ Ambify uses the Spotify API to acquire information on a user's playlists and aut
 
 Using the streamlit interface, enter a spotify username. **If** your username does not appear to be valid and an error arises, enter the last section of the spotify user URI string, formatted as spotify:user:yourusername. To access this substring (yourusername in my example), select the more info dots under your profile, and after the holding option key, select "Copy Spotify URI". 
 
-After succesfully entering a username, enter a public playlist name in the playlist box (case-sensitive). For private playlist access, you can paste in the **full** playlist URI accessed similarly to above.
+After succesfully entering a username, enter a public playlist name in the playlist box (case-sensitive) and select **Get my ambience!**. For private playlist access, you can paste in the **full** playlist URI accessed similarly to above.
 
-Entering **RANDOM!** will output a random audio, but visuals are not currently suppported for this feature at the moment. 
+Entering **RANDOM!** in the playlist box will output a random audio, but visuals are not currently suppported for this feature at the moment. 
 
+Pressing *Stop Audio* stops the playing of audio. Entering **Get my ambience!** again will restart the audio for the same playlist or a new playlist (if new playlist entered). Visuals remain in this scenario.
+
+Ambify also returns a suggested volume level for each ambient audio (suggested for when headphones are being used).
+
+## Citations
 
 
