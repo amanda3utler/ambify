@@ -1,3 +1,4 @@
+### IMPORTS ###
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 import numpy as np
@@ -11,7 +12,7 @@ sp = spotipy.Spotify(auth_manager=auth_manager)
 
 class get_info():
     '''
-    Set up class containing attributes and methods for API access
+    Set up class containing attributes and methods for API access of songs and
 
     ...
 
@@ -29,13 +30,33 @@ class get_info():
     get_pl_cover():
         Returns a PIL Image object of the specified playlist's cover art
     select_songs():
-        Returns
+        Returns two arrays of song titles and song uris that share a common index
+    extract_features():
+        Returns a pandas.DataFrame of all songs in a playlist and their API extracted features
 
     '''
     def __init__(self,username,playlist_name):
+        '''
+        Setting up attributes to return username and playlist
+
+        Parameters
+        ------
+        username: str
+            Input username
+        playlist_name: str
+            Input playlist title
+        '''
         self.user = username
         self.PL = playlist_name
     def show_playlists(self):
+        '''
+        Getting all the pairs of playlist names and their corresponding uris
+
+        Returns
+        -------
+        dicts: dictionary
+            A dictionary storing the key (playlist name) and value (playlist URI) pairs
+        '''
         playlists = sp.user_playlists(self.user)
         playlist_names = np.array([playlists["items"][i]["name"] for i in range(len(playlists["items"]))])
         playlist_uris = np.array([playlists["items"][i]["uri"] for i in range(len(playlists["items"]))])
@@ -44,6 +65,14 @@ class get_info():
             dicts[playlist_names[j]] = playlist_uris[j]
         return dicts
     def get_pl_cover(self):
+        '''
+        A function that gets the playlist cover art
+
+        Returns
+        -------
+        im: PIL.Image.Image
+            The PIL Image object containing the cover art
+        '''
         dicts = self.show_playlists()
         if (self.PL).startswith("spotify:"):
             pl = self.PL
@@ -52,11 +81,19 @@ class get_info():
         covs = sp.playlist_cover_image(pl)
         response = requests.get(covs[0]["url"],stream=True)
         im = Image.open(response.raw)
-        #im = crop_im(req_out=response)
-        #im = im.resize((660,660))
         return im
 
     def select_songs(self):
+        '''
+        Returns two arrays of song titles and song uris that share a common index
+
+        Returns
+        -------
+        trackuris: numpy.ndarray
+            The track URIs
+        tracknames: numpy.ndarray
+            The track titles
+        '''
         dicts = self.show_playlists()
         if (self.PL).startswith("spotify:"):
             pl = self.PL
@@ -65,16 +102,17 @@ class get_info():
         tracks = sp.playlist_items(pl)
         track_names = np.array([tracks["items"][i]["track"]["name"] for i in range(len(tracks["items"]))])
         track_uris = np.array([tracks["items"][i]["track"]["uri"] for i in range(len(tracks["items"]))])
-        #tr_dicts = {}
-        #for j in range(len(track_uris)):
-            #tr_dicts[track_names[j]] = track_uris[j]
         return track_uris,track_names
 
     def extract_features(self):
-        #songs = select_songs(username,playlist_name)[0]
-        #songs = (self.select_songs())[0]
-        #names = select_songs(username,playlist_name)[1]
-        #names = (self.select_songs())[1]
+        '''
+        Returns a pandas.DataFrame of all songs in a playlist and their API extracted features
+
+        Returns
+        -------
+        df: pandas.DataFrame
+            Table containing all relevant characteristics of each track in a playlist, used for classification
+        '''
         songs, names = self.select_songs()
         df = pd.DataFrame()
         df["name"] = names
