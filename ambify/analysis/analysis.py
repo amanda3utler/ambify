@@ -2,9 +2,11 @@
 # To add a new markdown cell, type '# %% [markdown]'
 
 # %%
-from ambify.login import extract_features
+from ambify.login import get_info
 import numpy as np
 import statistics as st
+import collections as c
+import pandas as pd
 
 
 # %%
@@ -13,60 +15,86 @@ def classify_sg(song_row):
     ac = song_row["acousticness"]
     E = song_row["energy"]
     if (v <= .3) and (E <= 0.3):
-        return 0
+        clfd = 0
     elif (v <= .3) and (E >= 0.3):
-        if ac < .6:
-            return 6
+        if ac < .5:
+            clfd = 6
         else:
-            return 3
+            clfd = 3
     elif (.3 < v < .5):
         if ac < .3:
-            return 7
+            clfd = 7
         elif (.3 <= ac <= .8):
             if E > .5:
-                return 4
+                clfd = 4
             else:
-                return 1
+                clfd = 1
         else:
-            return 2
+            clfd = 2
     elif (.3 < v < .5) and (E > .7):
-        return 1
+        clfd = 1
     elif (v >= .5):
         if ac < .2:
-            return 5
+            clfd = 5
         else:
-            return 4
+            clfd = 4
     else:
-        return 5
+        clfd = 5
+    return clfd
 
+class mode_dat():
+    '''
+    #If the mode is equal or only differs by 1 instance, perform a tiebreak
+    '''
+    def __init__(self,arr):
+        self.data = np.array(arr)
+    def top_two(self):
+        m1 = c.Counter(self.data).most_common()[0][0]
+        m2 = c.Counter(self.data).most_common()[1][0]
+        return (m1,m2)
+    def mode_cts(self):
+        mt,mt2 = self.top_two()
+        inst = len(np.where(self.data == mt)[0])
+        inst2 = len(np.where(self.data == mt2)[0])
+        return (inst,inst2)
+    def secondary(self):
+        mt, mt2 = self.top_two()
+        s_rank = [0,7,2,3,1,6,4,5]
+        for s in s_rank:
+            if s in [mt, mt2]:
+                return s
 
-# %%
 def run_classifier(username,playlist):
-    sdf = extract_features(username,playlist)
+    sobj = get_info(username,playlist)
+    sdf = sobj.extract_features()
     fts = []
     for i in range(len(sdf)):
         svar = classify_sg(sdf.loc[i])
         fts.append(svar)
-    outc = st.mode(fts)
+    if len(fts) > 1:
+        md = mode_dat(fts)
+        c1,c2 = md.mode_cts()
+        if c2-c1 > 1:
+            outc = st.mode(fts)
+        else:
+            outc = md.secondary()
+    elif len(fts) == 1:
+        outc = st.mode(fts)
+    else:
+        outc = "flag"
     return outc
 
 
-def modes(array):
-    array = np.array(array)
-    outc = st.mode(array)
-    extr = np.array(array[np.where(array != outc)])
-    outc2 = st.mode(extr)
-    inst = len(np.where(array == outc)[0])
-    inst2 = len(np.where(array == outc2)[0])
-    return outc, outc2,inst,inst2
 
 
-# %%
-#class tiebreak():
-    '''
-    If the mode is equal or only differs by 1 instance, perform a tiebreak
-    '''
-    #def __init__(self,array):
+
+
+
+
+
+
+
+
         
         
 
