@@ -24,10 +24,12 @@ After succesfully entering a username, enter a public playlist name in the playl
 
 Entering **RANDOM!** in the playlist box will output a random audio, but visuals are not currently suppported for this feature at the moment. 
 
-Pressing *Stop Audio* stops the playing of audio. Entering **Get my ambience!** again will restart the audio for the same playlist or a new playlist (if new playlist entered). Visuals remain in this scenario.
+Pressing **Stop Audio** stops the playing of audio. Entering **Get my ambience!** again will restart the audio for the same playlist or a new playlist (if new playlist entered). Visuals remain in this scenario.
 
 Ambify also returns a suggested volume level for each ambient audio (suggested for when headphones are being used).
 
 ## Citations
+All audio purchased from: https://www.freetousesounds.com/
+
 
 
