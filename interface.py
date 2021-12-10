@@ -10,7 +10,7 @@ import time
 
 st.markdown('<style>body{background-color: darkgreen;}</style>',unsafe_allow_html=True)
 
-pg.init()
+pg.mixer.init()
 original_title = '<p style="font-family:Georgia; color:darkgreen; font-size: 40px;">ambify</p>'
 st.markdown(original_title, unsafe_allow_html=True)
 quote = '<p style="font-family:sans-serif; color:grey; font-size: 15px;font-style: italic;">vibe your life</p>'
