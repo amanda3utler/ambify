@@ -16,6 +16,7 @@ setuptools.setup(
         'matplotlib>=3',
         'streamlit',
         'pygame>=1.9.4',
+        'libglib2.0-0',
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
