@@ -26,8 +26,8 @@ with st.form(key='Playlist'):
         if met_out == "flag":
             st.text("Playlist empty, please check spelling.")
         else:
-            lpath = "visuals/palettes/test"+met_out+"_L.gif"
-            rpath = "visuals/palettes/test"+met_out+"_R.gif"
+            lpath = "ambify/outputs/visuals/palettes/test"+met_out+"_L.gif"
+            rpath = "ambify/outputs/visuals/palettes/test"+met_out+"_R.gif"
 
             im = crop_im(us_name=user, pl_name=text_input)
         #nupath = "https://htmlcolorcodes.com/assets/images/colors/aqua-color-solid-background-1920x1080.png"
@@ -61,7 +61,7 @@ def get_vol(val):
     else:
         return " Default"
 
-head = 'sounds/s_'
+head = 'ambify/outputs/sounds/s_'
 so_ext = ".mp3"
 
 @st.cache
