@@ -4,3 +4,4 @@ Pillow
 pygame
 requests
 statistics
+spotipy
