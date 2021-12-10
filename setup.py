@@ -11,7 +11,6 @@ setuptools.setup(
     package_data={'ambify': ['outputs/sounds/*.mp3']},
     install_requires=[
         'numpy>=1.17',
-        'scipy',
         'spotipy',
         'pandas',
         'requests',
