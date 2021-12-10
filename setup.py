@@ -8,7 +8,7 @@ setuptools.setup(
     author_email="amanda.butler@yale.edu",
     description='An all-in-one ambient music player',
     packages=["ambify"],
-    package_data={'ambify': ['outputs/sounds/*.mp3']}
+    package_data={'ambify': ['outputs/sounds/*.mp3']},
     install_requires=[
         'numpy>=1.17',
         'scipy',
