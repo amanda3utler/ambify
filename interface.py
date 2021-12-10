@@ -2,7 +2,7 @@
 import streamlit as st
 import numpy as np
 from ambify.analysis import run_classifier
-from ambify.outputs.visuals import crop_im
+from ambify.outputs.visualizer import crop_im
 import pygame as pg
 import requests
 from PIL import Image
