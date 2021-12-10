@@ -15,12 +15,12 @@ setuptools.setup(
         'spotipy',
         'matplotlib>=3',
         'streamlit',
-        'pygame',
+        'pygame>=1.9.4',
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
         "Intended Audience :: Spotify Users",
         "Operating System :: OS Independent",
     ],
-    python_requires='>=3.6',
+    python_requires='>=3.7',
 )
