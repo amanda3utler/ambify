@@ -22,7 +22,7 @@ Using the streamlit interface, enter a spotify username. **If** your username do
 
 After succesfully entering a username, enter a public playlist name in the playlist box (case-sensitive) and select **Get my ambience!**. For private playlist access, you can paste in the **full** playlist URI accessed similarly to above.
 
-Entering **RANDOM!** in the playlist box will output a random audio, but visuals are not currently suppported for this feature at the moment. 
+Entering **RANDOM** in the playlist box will output a random audio, but visuals are not currently suppported for this feature at the moment. 
 
 Pressing **Stop Audio** stops the playing of audio. Entering **Get my ambience!** again will restart the audio for the same playlist or a new playlist (if new playlist entered). Visuals remain in this scenario. 
 
