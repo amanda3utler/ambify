@@ -1,1 +1,1 @@
-from .login import get_info
+from .login import Get_info
