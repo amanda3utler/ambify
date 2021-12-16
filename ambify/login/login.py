@@ -10,7 +10,7 @@ import requests
 auth_manager = SpotifyClientCredentials("3e935e832ff04b5c89d3ab4ac28982b1","cf4809789e63467e8c44d608df670c53")
 sp = spotipy.Spotify(auth_manager=auth_manager)
 
-class get_info():
+class Get_info():
     '''
     Set up class containing attributes and methods for API access of songs and
 
