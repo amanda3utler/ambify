@@ -62,7 +62,7 @@ def classify_sg(song_row):
         clfd = 5
     return clfd
 
-class mode_dat():
+class Mode_dat():
     '''
     A class to handle analysis if a single classification is not possible across a whole playlist (equal modes)
 
@@ -165,7 +165,7 @@ def run_classifier(username,playlist):
         svar = classify_sg(sdf.loc[i])
         fts.append(svar)
     if len(fts) > 1:
-        md = mode_dat(fts)
+        md = Mode_dat(fts)
         c1,c2 = md.mode_cts()
         if c2-c1 > 1:
             outc = st.mode(fts)
