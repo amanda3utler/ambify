@@ -2,7 +2,7 @@
 import numpy as np
 from PIL import Image
 import requests
-from ambify.login import get_info
+from ambify.login import Get_info
 import time
 
 def crop_im(us_name,pl_name):
@@ -20,7 +20,7 @@ def crop_im(us_name,pl_name):
     imcrop: PIL.Image.Image
         Cover art cropped to square of 660 by 660 pixels
     '''
-    myobj = get_info(us_name,pl_name)
+    myobj = Get_info(us_name,pl_name)
     with myobj.get_pl_cover() as im:
         if im.width > im.height:
             left = im.width//2 - im.height//2
