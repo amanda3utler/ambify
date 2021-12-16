@@ -1,5 +1,5 @@
 ### IMPORTS ###
-from ambify.login import get_info
+from ambify.login import Get_info
 import numpy as np
 import statistics as st
 import collections as c
@@ -158,7 +158,7 @@ def run_classifier(username,playlist):
     outc:int or str
         The classifcation outcome for the whole playlist; str if playlist is empty
     '''
-    sobj = get_info(username,playlist)
+    sobj = Get_info(username,playlist)
     sdf = sobj.extract_features()
     fts = []
     for i in range(len(sdf)):
